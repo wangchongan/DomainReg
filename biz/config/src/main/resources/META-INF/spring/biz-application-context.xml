@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" 
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:beans="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd" default-autowire="byName">
+
+    
+    <context:property-placeholder location="classpath:placeholder.properties"/>
+   
+    <beans:import resource="classpath:/META-INF/spring/biz-datasource.xml" />
+    <beans:import resource="classpath:/META-INF/spring/biz-common.xml" />
+    <beans:import resource="classpath:/META-INF/spring/biz-common-dao.xml" />
+    <beans:import resource="classpath:/META-INF/spring/biz-common-service.xml" />
+    <beans:import resource="classpath:/META-INF/spring/biz-domain-dao.xml" />
+    <beans:import resource="classpath:/META-INF/spring/biz-domain-service.xml" />
+    <beans:import resource="classpath:/META-INF/spring/biz-user-dao.xml" />
+    <beans:import resource="classpath:/META-INF/spring/biz-user-service.xml" />
+    <beans:import resource="classpath:/META-INF/spring/biz-web-common.xml" />
+    <beans:import resource="classpath:/META-INF/spring/biz-web-domain.xml" />
+    <beans:import resource="classpath:/META-INF/spring/biz-web-user.xml" />
+    <beans:import resource="classpath:/META-INF/spring/biz-task-domain.xml" />
+    
+</beans>  
+
+

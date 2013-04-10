@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+    <appender name="PROJECT-DEBUG" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="file" value="/logs/jinmibao/sys/jmb-debug.log"/>
+        <param name="append" value="true"/>
+        <param name="encoding" value="UTF-8"/>
+        <param name="threshold" value="debug"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%X{requestURIWithQueryString}] %-5p %c{2} %L - %m%n"/>
+        </layout>
+    </appender>
+
+	<appender name="PROJECT-CONSOLE" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss,SSS} %p %C{4} %m%n" />
+		</layout>
+	</appender>
+	
+	<appender name="PROJECT-ERROR" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="file" value="/logs/jinmibao/sys/jmb-error.log"/>
+        <param name="append" value="true"/>
+        <param name="encoding" value="UTF-8"/>
+        <param name="threshold" value="error"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%X{requestURIWithQueryString}] %-5p %c{2} %L - %m%n"/>
+        </layout>
+    </appender>
+    
+    <appender name="BIZ-TASK" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="file" value="/logs/jinmibao/usr/jmb-biz-task.log"/>
+        <param name="append" value="true"/>
+        <param name="encoding" value="UTF-8"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d %-5p %c{2} %L - %m%n"/>
+        </layout>
+    </appender>
+    
+    <appender name="BIZ" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="file" value="/logs/jinmibao/usr/jmb-biz.log"/>
+        <param name="append" value="true"/>
+        <param name="encoding" value="UTF-8"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d %-5p %c{2} %L - %m%n"/>
+        </layout>
+    </appender>
+    
+    <!-- 用户子工程 -->
+    <logger name="com.jinmibao.task" additivity="false">
+        <level value="INFO"/>
+        <appender-ref ref="BIZ-TASK"/>
+        <!-- 开发环境 -->
+        <appender-ref ref="PROJECT-DEBUG"/>
+        <appender-ref ref="PROJECT-CONSOLE"/>
+    </logger>
+    
+    <!-- 所有默认工程 -->
+    <logger name="com.jinmibao" additivity="false">
+        <level value="INFO"/>
+        <appender-ref ref="BIZ"/>
+        <appender-ref ref="PROJECT-CONSOLE"/>
+    </logger>
+    
+    <!-- 打印SQL语句 -->
+    <logger name="java.sql.Statement" additivity="true">
+       <level value="DEBUG" />
+    </logger>
+    <logger name="java.sql.Connection" additivity="true">
+       <level value="DEBUG" />
+    </logger>
+    <logger name="com.ibatis" additivity="true">
+   		<level value="DEBUG" />
+    </logger>
+    <logger name="java.sql.ResultSet" additivity="true">
+       <level value="DEBUG" />
+       <appender-ref ref="PROJECT-CONSOLE" />
+    </logger>
+    <logger name="java.sql.PreparedStatement" additivity="true">
+       <level value="DEBUG" />
+       <appender-ref ref="PROJECT-CONSOLE" />
+    </logger>
+    <!-- 打印SQL语句 -->
+    
+	<root>
+     <!--  
+        <level value="WARN"/>
+		<appender-ref ref="PROJECT-ERROR"/>
+     -->
+        <level value="INFO"/>
+		<appender-ref ref="PROJECT-DEBUG"/>
+		<appender-ref ref="PROJECT-CONSOLE"/>
+    </root>
+    
+ 
+</log4j:configuration>

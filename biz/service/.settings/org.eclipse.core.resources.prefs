@@ -1,0 +1,14 @@
+eclipse.preferences.version=1
+encoding//src/main/java=UTF-8
+encoding//src/main/java/com/jinmibao/biz/dataobject/common/SysConfigDO.java=UTF-8
+encoding//src/main/java/com/jinmibao/biz/dataobject/domain/DomainDeletedDO.java=UTF-8
+encoding//src/main/java/com/jinmibao/biz/dataobject/domain/PinyinDO.java=UTF-8
+encoding//src/main/java/com/jinmibao/biz/dataobject/user/RegDO.java=UTF-8
+encoding//src/main/java/com/jinmibao/biz/dataobject/user/UserDO.java=UTF-8
+encoding//src/main/java/com/jinmibao/biz/query/common/SysConfigQuery.java=UTF-8
+encoding//src/main/java/com/jinmibao/biz/query/domain/DomainDeletedQuery.java=UTF-8
+encoding//src/main/java/com/jinmibao/biz/query/domain/PinyinQuery.java=UTF-8
+encoding//src/main/java/com/jinmibao/biz/query/user/RegQuery.java=UTF-8
+encoding//src/main/java/com/jinmibao/biz/query/user/UserQuery.java=UTF-8
+encoding//src/test/java=UTF-8
+encoding/<project>=UTF-8

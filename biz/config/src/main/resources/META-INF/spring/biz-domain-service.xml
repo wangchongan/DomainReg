@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" 
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:beans="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd" default-autowire="byName">
+
+    <bean id="domainDeletedService" class="com.jinmibao.biz.service.domain.impl.DomainDeletedServiceImpl" parent="genericService">
+    	<property name="genericDao" ref="domainDeletedDao"></property>  
+    </bean>
+    <bean id="pinyinService" class="com.jinmibao.biz.service.domain.impl.PinyinServiceImpl" parent="genericService">
+    	<property name="genericDao" ref="pinyinDao"></property>  
+    </bean>
+    
+    
+    <bean id="resolvePendingDeletedDomainNumber" class="com.jinmibao.task.service.deleteddomain.impl.ResolvePendingDeletedDomainNumber">
+    </bean>
+    <bean id="resolvePendingDeletedDomainPinyin" class="com.jinmibao.task.service.deleteddomain.impl.ResolvePendingDeletedDomainPinyin">
+    </bean>
+    <bean id="resolvePendingDeletedDomainBase" class="com.jinmibao.task.service.deleteddomain.impl.ResolvePendingDeletedDomainBase">
+    </bean>
+    <bean id="resolveAllPendingHandler" class="com.jinmibao.task.service.impl.ResolveAllPendingHandlerImpl">
+    </bean>
+    
+    <bean id="resolvePendingHandler" class="com.jinmibao.task.service.impl.ResolvePendingHandlerImpl">
+   		<property name="resolvePendingDeletedDomainList">
+   			<list>
+   				<ref bean="resolvePendingDeletedDomainNumber"/>
+   				<ref bean="resolvePendingDeletedDomainPinyin"/>
+   				<ref bean="resolvePendingDeletedDomainBase"/>
+        	</list>
+   		</property>  
+    </bean>
+     
+</beans>  

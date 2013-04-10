@@ -1,0 +1,791 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="domainDeleted" >
+
+  <typeAlias alias="domainDeletedDO" type="com.jinmibao.biz.dataobject.domain.DomainDeletedDO" />
+  <typeAlias alias="domainDeletedQuery" type="com.jinmibao.biz.query.domain.DomainDeletedQuery" />
+
+  <resultMap id="domainDeletedDOResultMap" class="domainDeletedDO" >
+    <result property="id" column="id" />
+    <result property="gmtCreate" column="gmt_create" />
+    <result property="gmtModified" column="gmt_modified" />
+    <result property="isDeleted" column="is_deleted" />
+    <result property="domainName" column="domain_name" />
+    <result property="domainType" column="domain_type" />
+    <result property="gmtPlanDeleted" column="gmt_plan_deleted" />
+    <result property="isAllNum" column="is_all_num" />
+    <result property="isAllLetter" column="is_all_letter" />
+    <result property="isAllPinyin" column="is_all_pinyin" />
+    <result property="isAllPinyinOne" column="is_all_pinyin_one" />
+    <result property="isAllPinyinTwo" column="is_all_pinyin_two" />
+    <result property="isAllPinyinThree" column="is_all_pinyin_three" />
+    <result property="isHasPinyin" column="is_has_pinyin" />
+    <result property="isHasPinyinOne" column="is_has_pinyin_one" />
+    <result property="isHasPinyinTwo" column="is_has_pinyin_two" />
+    <result property="isHasPinyinThree" column="is_has_pinyin_three" />
+    <result property="pinyinChinese" column="pinyin_chinese" />
+    <result property="allLength" column="all_length" />
+    <result property="isHasLine" column="is_has_line" />
+    <result property="lineCount" column="line_count" />
+    <result property="isNumStart" column="is_num_start" />
+    <result property="isLetterStart" column="is_letter_start" />
+    <result property="isNumStartEnd" column="is_num_start_end" />
+    <result property="isLetterStartEnd" column="is_letter_start_end" />
+    <result property="isHasYear" column="is_has_year" />
+    <result property="yearId" column="year_id" />
+    <result property="isHasCnProv" column="is_has_cn_prov" />
+    <result property="provId" column="prov_id" />
+    <result property="isHasCnCity" column="is_has_cn_city" />
+    <result property="cityId" column="city_id" />
+    <result property="isHasCountry" column="is_has_country" />
+    <result property="countryId" column="country_id" />
+    <result property="isHasCompany" column="is_has_company" />
+    <result property="companyId" column="company_id" />
+    <result property="isHasCelebrity" column="is_has_Celebrity" />
+    <result property="celebrityId" column="Celebrity_id" />
+    <result property="isChinese" column="is_chinese" />
+    <result property="chineseType" column="chinese_type" />
+    <result property="isHasPost" column="is_has_post" />
+    <result property="postId" column="post_id" />
+    <result property="dealStatus" column="deal_status" />
+  </resultMap>
+
+  <sql id="domainDeleted_columns" >
+    a1.id, a1.gmt_create, a1.gmt_modified, a1.is_deleted, a1.domain_name, a1.domain_type, 
+      a1.gmt_plan_deleted, a1.is_all_num, a1.is_all_letter, a1.is_all_pinyin, a1.is_all_pinyin_one, 
+      a1.is_all_pinyin_two, a1.is_all_pinyin_three, a1.is_has_pinyin, a1.is_has_pinyin_one, 
+      a1.is_has_pinyin_two, a1.is_has_pinyin_three, a1.pinyin_chinese, a1.all_length, a1.is_has_line, 
+      a1.line_count, a1.is_num_start, a1.is_letter_start, a1.is_num_start_end, a1.is_letter_start_end, 
+      a1.is_has_year, a1.year_id, a1.is_has_cn_prov, a1.prov_id, a1.is_has_cn_city, a1.city_id, 
+      a1.is_has_country, a1.country_id, a1.is_has_company, a1.company_id, a1.is_has_Celebrity, 
+      a1.Celebrity_id, a1.is_chinese, a1.chinese_type, a1.is_has_post, a1.post_id, a1.deal_status
+      
+  </sql>
+
+    
+  <sql id="domainDeleted_queryParams" >
+    <dynamic prepend="WHERE" >
+      <isNotNull property="id" prepend="AND" >
+        <![CDATA[  
+        id = #id#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isDeleted" prepend="AND" >
+        <![CDATA[  
+        is_deleted = #isDeleted#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="domainName" prepend="AND" >
+        <![CDATA[  
+        domain_name = #domainName#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="domainType" prepend="AND" >
+        <![CDATA[  
+        domain_type = #domainType#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtPlanDeleted" prepend="AND" >
+        <![CDATA[  
+        gmt_plan_deleted = #gmtPlanDeleted#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isAllNum" prepend="AND" >
+        <![CDATA[  
+        is_all_num = #isAllNum#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isAllLetter" prepend="AND" >
+        <![CDATA[  
+        is_all_letter = #isAllLetter#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isAllPinyin" prepend="AND" >
+        <![CDATA[  
+        is_all_pinyin = #isAllPinyin#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isAllPinyinOne" prepend="AND" >
+        <![CDATA[  
+        is_all_pinyin_one = #isAllPinyinOne#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isAllPinyinTwo" prepend="AND" >
+        <![CDATA[  
+        is_all_pinyin_two = #isAllPinyinTwo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isAllPinyinThree" prepend="AND" >
+        <![CDATA[  
+        is_all_pinyin_three = #isAllPinyinThree#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isHasPinyin" prepend="AND" >
+        <![CDATA[  
+        is_has_pinyin = #isHasPinyin#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isHasPinyinOne" prepend="AND" >
+        <![CDATA[  
+        is_has_pinyin_one = #isHasPinyinOne#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isHasPinyinTwo" prepend="AND" >
+        <![CDATA[  
+        is_has_pinyin_two = #isHasPinyinTwo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isHasPinyinThree" prepend="AND" >
+        <![CDATA[  
+        is_has_pinyin_three = #isHasPinyinThree#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="allLength" prepend="AND" >
+        <![CDATA[  
+        all_length = #allLength#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isHasLine" prepend="AND" >
+        <![CDATA[  
+        is_has_line = #isHasLine#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="lineCount" prepend="AND" >
+        <![CDATA[  
+        line_count = #lineCount#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isNumStart" prepend="AND" >
+        <![CDATA[  
+        is_num_start = #isNumStart#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isLetterStart" prepend="AND" >
+        <![CDATA[  
+        is_letter_start = #isLetterStart#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isNumStartEnd" prepend="AND" >
+        <![CDATA[  
+        is_num_start_end = #isNumStartEnd#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isLetterStartEnd" prepend="AND" >
+        <![CDATA[  
+        is_letter_start_end = #isLetterStartEnd#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isHasYear" prepend="AND" >
+        <![CDATA[  
+        is_has_year = #isHasYear#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="yearId" prepend="AND" >
+        <![CDATA[  
+        year_id = #yearId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isHasCnProv" prepend="AND" >
+        <![CDATA[  
+        is_has_cn_prov = #isHasCnProv#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="provId" prepend="AND" >
+        <![CDATA[  
+        prov_id = #provId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isHasCnCity" prepend="AND" >
+        <![CDATA[  
+        is_has_cn_city = #isHasCnCity#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="cityId" prepend="AND" >
+        <![CDATA[  
+        city_id = #cityId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isHasCountry" prepend="AND" >
+        <![CDATA[  
+        is_has_country = #isHasCountry#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="countryId" prepend="AND" >
+        <![CDATA[  
+        country_id = #countryId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isHasCompany" prepend="AND" >
+        <![CDATA[  
+        is_has_company = #isHasCompany#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="companyId" prepend="AND" >
+        <![CDATA[  
+        company_id = #companyId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isHasCelebrity" prepend="AND" >
+        <![CDATA[  
+        is_has_Celebrity = #isHasCelebrity#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="celebrityId" prepend="AND" >
+        <![CDATA[  
+        Celebrity_id = #celebrityId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isChinese" prepend="AND" >
+        <![CDATA[  
+        is_chinese = #isChinese#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="chineseType" prepend="AND" >
+        <![CDATA[  
+        chinese_type = #chineseType#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isHasPost" prepend="AND" >
+        <![CDATA[  
+        is_has_post = #isHasPost#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="postId" prepend="AND" >
+        <![CDATA[  
+        post_id = #postId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="dealStatus" prepend="AND" >
+        <![CDATA[  
+        deal_status = #dealStatus#  
+        ]]>  
+      </isNotNull>
+    </dynamic>
+  </sql>
+  
+  <sql id="domainDeleted_queryParams_page" >
+    <dynamic prepend="WHERE" >
+      <isNotNull property="DomainDeletedQuery.isDeleted" prepend="AND" >
+        <![CDATA[  
+        is_deleted = #DomainDeletedQuery.isDeleted#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="DomainDeletedQuery.domainName" prepend="AND" >
+        <![CDATA[  
+        domain_name = #DomainDeletedQuery.domainName#  
+        ]]>  
+      </isNotNull>
+      <isNotEmpty property="DomainDeletedQuery.keywords" prepend="AND" >
+      	<isEqual property="DomainDeletedQuery.keywordPlace" compareValue="0" >
+	        <![CDATA[  
+	        domain_name like concat('%',#DomainDeletedQuery.keywords#,'%')
+	        ]]>  
+      	</isEqual>
+      	<isEqual property="DomainDeletedQuery.keywordPlace" compareValue="1" >
+	        <![CDATA[  
+	        domain_name like concat(#DomainDeletedQuery.keywords#,'%')
+	        ]]>  
+      	</isEqual>
+      	<isEqual property="DomainDeletedQuery.keywordPlace" compareValue="2" >
+	        <![CDATA[  
+	        domain_name like concat('%',#DomainDeletedQuery.keywords#)
+	        ]]>  
+      	</isEqual>
+      	<isEqual property="DomainDeletedQuery.keywordPlace" compareValue="3" >
+	        <![CDATA[  
+	        (domain_name like concat('%',#DomainDeletedQuery.keywords#) or 
+	        domain_name like concat(#DomainDeletedQuery.keywords#,'%') )
+	        ]]>  
+      	</isEqual>
+      </isNotEmpty>
+      <isNotEmpty property="DomainDeletedQuery.excludeKeywords" prepend="AND">
+      		domain_name not like concat('%',#DomainDeletedQuery.excludeKeywords#,'%')
+      </isNotEmpty>
+      <isNotNull property="DomainDeletedQuery.domainType" prepend="AND" >
+        <![CDATA[  
+        domain_type = #DomainDeletedQuery.domainType#  
+        ]]>  
+      </isNotNull>
+ 	  <isNotNull property="DomainDeletedQuery.deletedDateStart" prepend="AND" >
+        <![CDATA[  
+        gmt_plan_deleted >= #DomainDeletedQuery.deletedDateStart#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="DomainDeletedQuery.deletedDateEnd" prepend="AND" >
+        <![CDATA[  
+        gmt_plan_deleted <= #DomainDeletedQuery.deletedDateEnd#     
+        ]]>  
+      </isNotNull>
+      <isNotNull property="DomainDeletedQuery.domainTypeArray" prepend="AND" >
+        domain_type in
+        <iterate open="(" close=")" conjunction=","  property="DomainDeletedQuery.domainTypeArray">       
+			#DomainDeletedQuery.domainTypeArray[]#     
+		</iterate>    
+      </isNotNull>
+      <isNotNull property="DomainDeletedQuery.lengthStart" prepend="AND" >
+        <![CDATA[  
+        all_length >= #DomainDeletedQuery.lengthStart#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="DomainDeletedQuery.lengthEnd" prepend="AND" >
+        <![CDATA[  
+        all_length <= #DomainDeletedQuery.lengthEnd#  
+        ]]>  
+      </isNotNull>
+      
+      <isNotNull property="DomainDeletedQuery.gmtPlanDeleted" prepend="AND" >
+        <![CDATA[  
+        gmt_plan_deleted = #DomainDeletedQuery.gmtPlanDeleted#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="DomainDeletedQuery.isAllNum" prepend="AND" >
+        <![CDATA[  
+        is_all_num = #DomainDeletedQuery.isAllNum#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="DomainDeletedQuery.isAllLetter" prepend="AND" >
+        <![CDATA[  
+        is_all_letter = #DomainDeletedQuery.isAllLetter#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="DomainDeletedQuery.isAllPinyin" prepend="AND" >
+        <![CDATA[  
+        is_all_pinyin = #DomainDeletedQuery.isAllPinyin#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="DomainDeletedQuery.isAllPinyinOne" prepend="AND" >
+        <![CDATA[  
+        is_all_pinyin_one = #DomainDeletedQuery.isAllPinyinOne#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="DomainDeletedQuery.isAllPinyinTwo" prepend="AND" >
+        <![CDATA[  
+        is_all_pinyin_two = #DomainDeletedQuery.isAllPinyinTwo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="DomainDeletedQuery.isAllPinyinThree" prepend="AND" >
+        <![CDATA[  
+        is_all_pinyin_three = #DomainDeletedQuery.isAllPinyinThree#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="DomainDeletedQuery.isHasPinyin" prepend="AND" >
+        <![CDATA[  
+        is_has_pinyin = #DomainDeletedQuery.isHasPinyin#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="DomainDeletedQuery.isHasPinyinOne" prepend="AND" >
+        <![CDATA[  
+        is_has_pinyin_one = #DomainDeletedQuery.isHasPinyinOne#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="DomainDeletedQuery.isHasPinyinTwo" prepend="AND" >
+        <![CDATA[  
+        is_has_pinyin_two = #DomainDeletedQuery.isHasPinyinTwo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="DomainDeletedQuery.isHasPinyinThree" prepend="AND" >
+        <![CDATA[  
+        is_has_pinyin_three = #DomainDeletedQuery.isHasPinyinThree#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="DomainDeletedQuery.allLength" prepend="AND" >
+        <![CDATA[  
+        all_length = #DomainDeletedQuery.allLength#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="DomainDeletedQuery.isHasLine" prepend="AND" >
+        <![CDATA[  
+        is_has_line = #DomainDeletedQuery.isHasLine#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="DomainDeletedQuery.lineCount" prepend="AND" >
+        <![CDATA[  
+        line_count = #DomainDeletedQuery.lineCount#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="DomainDeletedQuery.isNumStart" prepend="AND" >
+        <![CDATA[  
+        is_num_start = #DomainDeletedQuery.isNumStart#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="DomainDeletedQuery.isLetterStart" prepend="AND" >
+        <![CDATA[  
+        is_letter_start = #DomainDeletedQuery.isLetterStart#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="DomainDeletedQuery.isNumStartEnd" prepend="AND" >
+        <![CDATA[  
+        is_num_start_end = #DomainDeletedQuery.isNumStartEnd#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="DomainDeletedQuery.isLetterStartEnd" prepend="AND" >
+        <![CDATA[  
+        is_letter_start_end = #DomainDeletedQuery.isLetterStartEnd#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="DomainDeletedQuery.isHasYear" prepend="AND" >
+        <![CDATA[  
+        is_has_year = #DomainDeletedQuery.isHasYear#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="DomainDeletedQuery.yearId" prepend="AND" >
+        <![CDATA[  
+        year_id = #DomainDeletedQuery.yearId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="DomainDeletedQuery.isHasCnProv" prepend="AND" >
+        <![CDATA[  
+        is_has_cn_prov = #DomainDeletedQuery.isHasCnProv#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="DomainDeletedQuery.provId" prepend="AND" >
+        <![CDATA[  
+        prov_id = #DomainDeletedQuery.provId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="DomainDeletedQuery.isHasCnCity" prepend="AND" >
+        <![CDATA[  
+        is_has_cn_city = #DomainDeletedQuery.isHasCnCity#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="DomainDeletedQuery.cityId" prepend="AND" >
+        <![CDATA[  
+        city_id = #DomainDeletedQuery.cityId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="DomainDeletedQuery.isHasCountry" prepend="AND" >
+        <![CDATA[  
+        is_has_country = #DomainDeletedQuery.isHasCountry#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="DomainDeletedQuery.countryId" prepend="AND" >
+        <![CDATA[  
+        country_id = #DomainDeletedQuery.countryId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="DomainDeletedQuery.isHasCompany" prepend="AND" >
+        <![CDATA[  
+        is_has_company = #DomainDeletedQuery.isHasCompany#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="DomainDeletedQuery.companyId" prepend="AND" >
+        <![CDATA[  
+        company_id = #DomainDeletedQuery.companyId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="DomainDeletedQuery.isHasCelebrity" prepend="AND" >
+        <![CDATA[  
+        is_has_Celebrity = #DomainDeletedQuery.isHasCelebrity#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="DomainDeletedQuery.celebrityId" prepend="AND" >
+        <![CDATA[  
+        Celebrity_id = #DomainDeletedQuery.celebrityId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="DomainDeletedQuery.isChinese" prepend="AND" >
+        <![CDATA[  
+        is_chinese = #DomainDeletedQuery.isChinese#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="DomainDeletedQuery.chineseType" prepend="AND" >
+        <![CDATA[  
+        chinese_type = #DomainDeletedQuery.chineseType#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="DomainDeletedQuery.isHasPost" prepend="AND" >
+        <![CDATA[  
+        is_has_post = #DomainDeletedQuery.isHasPost#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="DomainDeletedQuery.postId" prepend="AND" >
+        <![CDATA[  
+        post_id = #DomainDeletedQuery.postId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="DomainDeletedQuery.dealStatus" prepend="AND" >
+        <![CDATA[  
+        deal_status = #DomainDeletedQuery.dealStatus#  
+        ]]>  
+      </isNotNull>
+      <isEqual property="isDealCount" compareValue="0">
+	      <isNotEmpty property="DomainDeletedQuery.rankByType" prepend="ORDER BY">
+	    	<isEqual property="DomainDeletedQuery.rankByType" compareValue="0">
+	    		all_length asc
+	    	</isEqual>
+	    	<isEqual property="DomainDeletedQuery.rankByType" compareValue="1">
+	    		domain_name asc
+	    	</isEqual>
+	    	<isEqual property="DomainDeletedQuery.rankByType" compareValue="2">
+	    		gmt_plan_deleted asc
+	    	</isEqual>
+	    	<isEqual property="DomainDeletedQuery.rankByType" compareValue="3">
+	    		gmt_plan_deleted asc, domain_name asc
+	    	</isEqual>
+	    	<isEqual property="DomainDeletedQuery.rankByType" compareValue="4">
+	    		gmt_plan_deleted asc, all_length asc
+	    	</isEqual>
+	    	<isEqual property="DomainDeletedQuery.rankByType" compareValue="5">
+	    		all_length asc, domain_name asc
+	    	</isEqual>
+	       </isNotEmpty>
+      </isEqual>
+    </dynamic>
+  </sql>
+
+  <insert id="domainDeleted.add" parameterClass="domainDeletedDO" >
+    INSERT INTO jmb_domain_deleted(gmt_create, gmt_modified, is_deleted, domain_name, domain_type, 
+      gmt_plan_deleted, is_all_num, is_all_letter, is_all_pinyin, is_all_pinyin_one, is_all_pinyin_two, 
+      is_all_pinyin_three, is_has_pinyin, is_has_pinyin_one, is_has_pinyin_two, is_has_pinyin_three, 
+      pinyin_chinese, all_length, is_has_line, line_count, is_num_start, is_letter_start, 
+      is_num_start_end, is_letter_start_end, is_has_year, year_id, is_has_cn_prov, prov_id, 
+      is_has_cn_city, city_id, is_has_country, country_id, is_has_company, company_id, 
+      is_has_Celebrity, Celebrity_id, is_chinese, chinese_type, is_has_post, post_id, 
+      deal_status)
+     VALUES ( now(), now(), #isDeleted#, #domainName#, #domainType#, 
+      #gmtPlanDeleted#, #isAllNum#, #isAllLetter#, #isAllPinyin#, #isAllPinyinOne#, #isAllPinyinTwo#, 
+      #isAllPinyinThree#, #isHasPinyin#, #isHasPinyinOne#, #isHasPinyinTwo#, #isHasPinyinThree#, 
+      #pinyinChinese#, #allLength#, #isHasLine#, #lineCount#, #isNumStart#, #isLetterStart#, 
+      #isNumStartEnd#, #isLetterStartEnd#, #isHasYear#, #yearId#, #isHasCnProv#, #provId#, 
+      #isHasCnCity#, #cityId#, #isHasCountry#, #countryId#, #isHasCompany#, #companyId#, 
+      #isHasCelebrity#, #celebrityId#, #isChinese#, #chineseType#, #isHasPost#, #postId#, 
+      #dealStatus#)
+    <selectKey keyProperty="id" resultClass="java.lang.Long" >
+      SELECT LAST_INSERT_ID() AS value
+    </selectKey>
+  </insert>
+
+  <update id="domainDeleted.update" parameterClass="domainDeletedDO" >
+    UPDATE jmb_domain_deleted   
+    <dynamic prepend="SET" >
+      <isNotNull property="gmtModified" prepend="," >
+        <![CDATA[  
+        gmt_modified = #gmtModified#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isDeleted" prepend="," >
+        <![CDATA[  
+        is_deleted = #isDeleted#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtPlanDeleted" prepend="," >
+        <![CDATA[  
+        gmt_plan_deleted = #gmtPlanDeleted#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isAllNum" prepend="," >
+        <![CDATA[  
+        is_all_num = #isAllNum#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isAllLetter" prepend="," >
+        <![CDATA[  
+        is_all_letter = #isAllLetter#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isAllPinyin" prepend="," >
+        <![CDATA[  
+        is_all_pinyin = #isAllPinyin#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isAllPinyinOne" prepend="," >
+        <![CDATA[  
+        is_all_pinyin_one = #isAllPinyinOne#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isAllPinyinTwo" prepend="," >
+        <![CDATA[  
+        is_all_pinyin_two = #isAllPinyinTwo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isAllPinyinThree" prepend="," >
+        <![CDATA[  
+        is_all_pinyin_three = #isAllPinyinThree#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isHasPinyin" prepend="," >
+        <![CDATA[  
+        is_has_pinyin = #isHasPinyin#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isHasPinyinOne" prepend="," >
+        <![CDATA[  
+        is_has_pinyin_one = #isHasPinyinOne#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isHasPinyinTwo" prepend="," >
+        <![CDATA[  
+        is_has_pinyin_two = #isHasPinyinTwo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isHasPinyinThree" prepend="," >
+        <![CDATA[  
+        is_has_pinyin_three = #isHasPinyinThree#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="pinyinChinese" prepend="," >
+        <![CDATA[  
+        pinyin_chinese = #pinyinChinese#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="allLength" prepend="," >
+        <![CDATA[  
+        all_length = #allLength#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isHasLine" prepend="," >
+        <![CDATA[  
+        is_has_line = #isHasLine#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="lineCount" prepend="," >
+        <![CDATA[  
+        line_count = #lineCount#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isNumStart" prepend="," >
+        <![CDATA[  
+        is_num_start = #isNumStart#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isLetterStart" prepend="," >
+        <![CDATA[  
+        is_letter_start = #isLetterStart#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isNumStartEnd" prepend="," >
+        <![CDATA[  
+        is_num_start_end = #isNumStartEnd#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isLetterStartEnd" prepend="," >
+        <![CDATA[  
+        is_letter_start_end = #isLetterStartEnd#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isHasYear" prepend="," >
+        <![CDATA[  
+        is_has_year = #isHasYear#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="yearId" prepend="," >
+        <![CDATA[  
+        year_id = #yearId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isHasCnProv" prepend="," >
+        <![CDATA[  
+        is_has_cn_prov = #isHasCnProv#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="provId" prepend="," >
+        <![CDATA[  
+        prov_id = #provId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isHasCnCity" prepend="," >
+        <![CDATA[  
+        is_has_cn_city = #isHasCnCity#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="cityId" prepend="," >
+        <![CDATA[  
+        city_id = #cityId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isHasCountry" prepend="," >
+        <![CDATA[  
+        is_has_country = #isHasCountry#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="countryId" prepend="," >
+        <![CDATA[  
+        country_id = #countryId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isHasCompany" prepend="," >
+        <![CDATA[  
+        is_has_company = #isHasCompany#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="companyId" prepend="," >
+        <![CDATA[  
+        company_id = #companyId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isHasCelebrity" prepend="," >
+        <![CDATA[  
+        is_has_Celebrity = #isHasCelebrity#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="celebrityId" prepend="," >
+        <![CDATA[  
+        Celebrity_id = #celebrityId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isChinese" prepend="," >
+        <![CDATA[  
+        is_chinese = #isChinese#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="chineseType" prepend="," >
+        <![CDATA[  
+        chinese_type = #chineseType#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isHasPost" prepend="," >
+        <![CDATA[  
+        is_has_post = #isHasPost#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="postId" prepend="," >
+        <![CDATA[  
+        post_id = #postId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="dealStatus" prepend="," >
+        <![CDATA[  
+        deal_status = #dealStatus#  
+        ]]>  
+      </isNotNull>
+    </dynamic>
+     WHERE id = #id#  
+  </update>
+
+  <select id="domainDeleted.findById" parameterClass="java.lang.Long" resultMap="domainDeletedDOResultMap" >
+     SELECT 
+    <include refid="domainDeleted_columns" />
+    <![CDATA[  
+     FROM jmb_domain_deleted a1 WHERE id = #id#
+    ]]>  
+  </select>
+
+  <delete id="domainDeleted.deleteById" parameterClass="java.lang.Long" >
+    <![CDATA[  
+     DELETE FROM jmb_domain_deleted WHERE id = #id#
+    ]]>  
+  </delete>
+
+  <select id="domainDeleted.findList" resultMap="domainDeletedDOResultMap" parameterClass="domainDeletedQuery" >
+     SELECT 
+    <include refid="domainDeleted_columns" />
+     FROM jmb_domain_deleted a1 
+    <include refid="domainDeleted_queryParams" />
+  </select>
+  
+  <select id="domainDeleted.findCount" parameterClass="map" resultClass="java.lang.Long" >
+    SELECT COUNT(id) AS num FROM jmb_domain_deleted
+    <include refid="domainDeleted_queryParams_page" />
+  </select>
+  
+  <!-- 分页  -->
+  <select id="domainDeleted.findByPage" resultMap="domainDeletedDOResultMap" parameterClass="map" >
+     SELECT 
+    <include refid="domainDeleted_columns" />
+     FROM jmb_domain_deleted a1 
+    <include refid="domainDeleted_queryParams_page" />
+    <include refid="pageControler" />
+  </select>
+  
+</sqlMap>

@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="user" >
+
+  <typeAlias alias="userDO" type="com.jinmibao.biz.dataobject.user.UserDO" />
+  <typeAlias alias="userQuery" type="com.jinmibao.biz.query.user.UserQuery" />
+
+  <resultMap id="userDOResultMap" class="userDO" >
+    <result property="id" column="id" />
+    <result property="gmtCreate" column="gmt_create" />
+    <result property="gmtModified" column="gmt_modified" />
+    <result property="creator" column="creator" />
+    <result property="modifier" column="modifier" />
+    <result property="userNick" column="user_nick" />
+    <result property="userPsw" column="user_psw" />
+    <result property="email" column="email" />
+    <result property="regIp" column="reg_ip" />
+    <result property="mobile" column="mobile" />
+    <result property="hasBuyApp" column="has_buy_app" />
+    <result property="gmtLastLogin" column="gmt_last_login" />
+    <result property="lastLoginIp" column="last_login_ip" />
+    <result property="gmtCurrentLogin" column="gmt_current_login" />
+    <result property="currentLoginIp" column="current_login_ip" />
+    <result property="loginCount" column="login_count" />
+    <result property="websiteUrl" column="website_url" />
+    <result property="status" column="status" />
+  </resultMap>
+
+  
+  <sql id="user_columns" >
+    a1.id, a1.gmt_create, a1.gmt_modified, a1.creator, a1.modifier, a1.user_nick, a1.user_psw, 
+      a1.email, a1.reg_ip, a1.mobile, a1.has_buy_app, a1.gmt_last_login, a1.last_login_ip, 
+      a1.gmt_current_login, a1.current_login_ip, a1.login_count, a1.website_url, a1.status
+      
+  </sql>
+
+
+  <sql id="user_queryParams" >
+    <dynamic prepend="WHERE" >
+      <isNotNull property="id" prepend="AND" >
+        <![CDATA[  
+        id = #id#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtCreate" prepend="AND" >
+        <![CDATA[  
+        gmt_create = #gmtCreate#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtModified" prepend="AND" >
+        <![CDATA[  
+        gmt_modified = #gmtModified#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="creator" prepend="AND" >
+        <![CDATA[  
+        creator = #creator#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="modifier" prepend="AND" >
+        <![CDATA[  
+        modifier = #modifier#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="userNick" prepend="AND" >
+        <![CDATA[  
+        user_nick = #userNick#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="userPsw" prepend="AND" >
+        <![CDATA[  
+        user_psw = #userPsw#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="email" prepend="AND" >
+        <![CDATA[  
+        email = #email#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="regIp" prepend="AND" >
+        <![CDATA[  
+        reg_ip = #regIp#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="mobile" prepend="AND" >
+        <![CDATA[  
+        mobile = #mobile#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="hasBuyApp" prepend="AND" >
+        <![CDATA[  
+        has_buy_app = #hasBuyApp#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtLastLogin" prepend="AND" >
+        <![CDATA[  
+        gmt_last_login = #gmtLastLogin#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="lastLoginIp" prepend="AND" >
+        <![CDATA[  
+        last_login_ip = #lastLoginIp#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtCurrentLogin" prepend="AND" >
+        <![CDATA[  
+        gmt_current_login = #gmtCurrentLogin#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="currentLoginIp" prepend="AND" >
+        <![CDATA[  
+        current_login_ip = #currentLoginIp#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="loginCount" prepend="AND" >
+        <![CDATA[  
+        login_count = #loginCount#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="websiteUrl" prepend="AND" >
+        <![CDATA[  
+        website_url = #websiteUrl#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="status" prepend="AND" >
+        <![CDATA[  
+        status = #status#  
+        ]]>  
+      </isNotNull>
+    </dynamic>
+  </sql>
+
+  
+  <insert id="user.insert" parameterClass="userDO" >
+    INSERT INTO jmb_user(gmt_create, gmt_modified, creator, modifier, user_nick, user_psw, 
+      email, reg_ip, mobile, has_buy_app, gmt_last_login, last_login_ip, gmt_current_login, 
+      current_login_ip, login_count, website_url, status)
+     VALUES (now(), now(), #creator#, #modifier#, #userNick#, #userPsw#, 
+      #email#, #regIp#, #mobile#, #hasBuyApp#, #gmtLastLogin#, #lastLoginIp#, #gmtCurrentLogin#, 
+      #currentLoginIp#, #loginCount#, #websiteUrl#, #status#)
+    <selectKey keyProperty="id" resultClass="java.lang.Long" >
+      SELECT LAST_INSERT_ID() AS value
+    </selectKey>
+  </insert>
+
+  <update id="user.update" parameterClass="userDO" >
+    UPDATE jmb_user   
+    <dynamic prepend="SET" >
+      <isNotNull property="gmtCreate" prepend="," >
+        <![CDATA[  
+        gmt_create = #gmtCreate#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtModified" prepend="," >
+        <![CDATA[  
+        gmt_modified = #gmtModified#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="creator" prepend="," >
+        <![CDATA[  
+        creator = #creator#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="modifier" prepend="," >
+        <![CDATA[  
+        modifier = #modifier#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="userNick" prepend="," >
+        <![CDATA[  
+        user_nick = #userNick#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="userPsw" prepend="," >
+        <![CDATA[  
+        user_psw = #userPsw#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="email" prepend="," >
+        <![CDATA[  
+        email = #email#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="regIp" prepend="," >
+        <![CDATA[  
+        reg_ip = #regIp#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="mobile" prepend="," >
+        <![CDATA[  
+        mobile = #mobile#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="hasBuyApp" prepend="," >
+        <![CDATA[  
+        has_buy_app = #hasBuyApp#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtLastLogin" prepend="," >
+        <![CDATA[  
+        gmt_last_login = #gmtLastLogin#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="lastLoginIp" prepend="," >
+        <![CDATA[  
+        last_login_ip = #lastLoginIp#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtCurrentLogin" prepend="," >
+        <![CDATA[  
+        gmt_current_login = #gmtCurrentLogin#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="currentLoginIp" prepend="," >
+        <![CDATA[  
+        current_login_ip = #currentLoginIp#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="loginCount" prepend="," >
+        <![CDATA[  
+        login_count = #loginCount#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="websiteUrl" prepend="," >
+        <![CDATA[  
+        website_url = #websiteUrl#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="status" prepend="," >
+        <![CDATA[  
+        status = #status#  
+        ]]>  
+      </isNotNull>
+    </dynamic>
+     WHERE id = #id#  
+  </update>
+
+  <select id="user.findById" parameterClass="java.lang.Long" resultMap="userDOResultMap" >
+     SELECT 
+    <include refid="user_columns" />
+    <![CDATA[  
+     FROM jmb_user a1 WHERE id = #id#
+    ]]>  
+  </select>
+
+  <delete id="user.deleteById" parameterClass="java.lang.Long" >
+    <![CDATA[  
+     DELETE FROM jmb_user WHERE id = #id#
+    ]]>  
+  </delete>
+
+   
+
+  <select id="user.findList" resultMap="userDOResultMap" parameterClass="userQuery" >
+     SELECT 
+    <include refid="user_columns" />
+     FROM jmb_user a1 
+    <include refid="user_queryParams" />
+  </select>
+
+   
+</sqlMap>

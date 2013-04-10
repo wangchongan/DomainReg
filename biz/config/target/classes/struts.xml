@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<!--以下项目开发阶段使用，开发完毕后需要关闭或删除的配置 -->
+	<constant name="struts.serve.static.browserCache" value="false" />
+	<constant name="struts.configuration.xml.reload" value="true" />
+	<constant name="struts.devMode" value="true" />
+	<!--以上项目开发阶段使用，开发完毕后需要关闭或删除的配置 -->
+
+	<constant name="struts.action.extension" value="action,do,jspa,jspx,php,asp,aspx,html" />
+	<!-- 设置无须拦截的请求
+	<constant name="struts.action.excludePattern" value=".*.js,.*.jsp" />
+	 -->
+	
+	<!-- 设置文件上传大小限制3M -->  
+    <constant name="struts.multipart.maxSize" value="3145728"></constant>  
+
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<constant name="struts.objectTypeDeterminer" value="notiger" />
+	<constant name="struts.objectFactory" value="spring" />
+	<constant name="struts.objectFactory.spring.autoWire" value="name" />
+
+	<include file="META-INF/struts/struts-domain.xml"/>
+	<include file="META-INF/struts/struts-common.xml"/>
+	<include file="META-INF/struts/struts-user.xml"/>
+	
+	
+	<package name="default" extends="struts-default">
+		<!-- 默认的action -->
+		<default-action-ref name="defaultAction" />
+		
+		<!-- 默认的action，当访问不存在的资源时候，就默认访问到本页面 -->
+		<action name="defaultAction">
+			<result>
+				/common/404.jsp
+			</result>
+		</action>
+	</package>
+	
+	<!-- 待完善 -->
+	<!-- 必须登录后才能上传 -->
+	<package name="fileupload" namespace="/fileupload" extends="defaultAuthority">  
+        <action name="upload" class="fileUploadAction" method="execute">  
+            <result name="success">/WEB-INF/page/message.jsp</result>  
+        </action>  
+    </package>  
+    
+</struts>

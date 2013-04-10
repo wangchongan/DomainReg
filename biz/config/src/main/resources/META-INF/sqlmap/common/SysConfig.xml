@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="SysConfig" >
+
+  <typeAlias alias="sysConfigDO" type="com.jinmibao.biz.dataobject.common.SysConfigDO" />
+  <typeAlias alias="sysConfigQuery" type="com.jinmibao.biz.query.common.SysConfigQuery" />
+
+  <resultMap id="sysConfigDOResultMap" class="sysConfigDO" >
+    <result property="id" column="id" />
+    <result property="gmtCreate" column="gmt_create" />
+    <result property="gmtModified" column="gmt_modified" />
+    <result property="name" column="name" />
+    <result property="value" column="value" />
+    <result property="groupName" column="group_name" />
+    <result property="remark" column="remark" />
+  </resultMap>
+ 
+  <sql id="sysConfig_columns" >
+    a1.id, a1.gmt_create, a1.gmt_modified, a1.name, a1.value, a1.group_name, a1.remark
+      
+  </sql>
+
+  <sql id="sysConfig_queryParams" >
+    <dynamic prepend="WHERE" >
+      <isNotNull property="id" prepend="AND" >
+        <![CDATA[  
+        id = #id#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtCreate" prepend="AND" >
+        <![CDATA[  
+        gmt_create = #gmtCreate#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtModified" prepend="AND" >
+        <![CDATA[  
+        gmt_modified = #gmtModified#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="name" prepend="AND" >
+        <![CDATA[  
+        name = #name#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="value" prepend="AND" >
+        <![CDATA[  
+        value = #value#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="groupName" prepend="AND" >
+        <![CDATA[  
+        group_name = #groupName#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="remark" prepend="AND" >
+        <![CDATA[  
+        remark = #remark#  
+        ]]>  
+      </isNotNull>
+    </dynamic>
+  </sql>
+
+  <insert id="sysConfig.add" parameterClass="sysConfigDO" >
+    INSERT INTO jmb_sys_config(gmt_create, gmt_modified, name, value, group_name, remark
+      )
+     VALUES (now(), now(), #name#, #value#, #groupName#, #remark#
+      )
+    <selectKey keyProperty="id" resultClass="java.lang.Long" >
+      SELECT LAST_INSERT_ID() AS value
+    </selectKey>
+  </insert>
+
+  <update id="sysConfig.update" parameterClass="sysConfigDO" >
+    UPDATE jmb_sys_config   
+    <dynamic prepend="SET" >
+      <isNotNull property="gmtModified" prepend="," >
+        <![CDATA[  
+        gmt_modified = now()  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="value" prepend="," >
+        <![CDATA[  
+        value = #value#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="remark" prepend="," >
+        <![CDATA[  
+        remark = #remark#  
+        ]]>  
+      </isNotNull>
+    </dynamic>
+     WHERE id = #id#  
+  </update>
+
+  <select id="sysConfig.findById" parameterClass="java.lang.Long" resultMap="sysConfigDOResultMap" >
+     SELECT 
+    <include refid="sysConfig_columns" />
+    <![CDATA[  
+     FROM jmb_sys_config a1 WHERE id = #id#
+    ]]>  
+  </select>
+
+  <delete id="sysConfig.deleteById" parameterClass="java.lang.Long" >
+    <![CDATA[  
+     DELETE FROM jmb_sys_config WHERE id = #id#
+    ]]>  
+  </delete>
+
+  <select id="sysConfig.findList" resultMap="sysConfigDOResultMap" parameterClass="sysConfigQuery" >
+     SELECT 
+    <include refid="sysConfig_columns" />
+     FROM jmb_sys_config a1 
+    <include refid="sysConfig_queryParams" />
+  </select>
+  
+</sqlMap>

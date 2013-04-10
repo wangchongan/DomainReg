@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="reg" >
+
+  <typeAlias alias="regDO" type="com.jinmibao.biz.dataobject.user.RegDO" />
+  <typeAlias alias="regQuery" type="com.jinmibao.biz.query.user.RegQuery" />
+
+  <resultMap id="regDOResultMap" class="regDO" >
+    <result property="id" column="ID" />
+    <result property="gmtCreate" column="gmt_create" />
+    <result property="regIp" column="reg_ip" />
+    <result property="email" column="email" />
+    <result property="mobile" column="mobile" />
+    <result property="gmtInvalid" column="gmt_invalid" />
+    <result property="gmtSend" column="gmt_send" />
+    <result property="validCode" column="valid_code" />
+  </resultMap>
+
+   
+  <sql id="reg_columns" >
+    a1.ID, a1.gmt_create, a1.reg_ip, a1.email, a1.mobile, a1.gmt_invalid, a1.valid_code ,a1.gmt_send
+      
+  </sql>
+
+
+  <sql id="reg_queryParams" >
+    <dynamic prepend="WHERE" >
+      <isNotNull property="id" prepend="AND" >
+        <![CDATA[  
+        ID = #id#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtCreate" prepend="AND" >
+        <![CDATA[  
+        gmt_create = #gmtCreate#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="regIp" prepend="AND" >
+        <![CDATA[  
+        reg_ip = #regIp#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="email" prepend="AND" >
+        <![CDATA[  
+        email = #email#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="mobile" prepend="AND" >
+        <![CDATA[  
+        mobile = #mobile#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtInvalid" prepend="AND" >
+        <![CDATA[  
+        gmt_invalid = #gmtInvalid#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtSend" prepend="AND" >
+        <![CDATA[  
+        gmt_send = #gmtSend#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="validCode" prepend="AND" >
+        <![CDATA[  
+        valid_code = #validCode#  
+        ]]>  
+      </isNotNull>
+    </dynamic>
+  </sql>
+
+  <insert id="reg.add" parameterClass="regDO" >
+    INSERT INTO jmb_reg(gmt_create, reg_ip, email, mobile, gmt_invalid, valid_code, 
+      gmt_send)
+     VALUES (now(), #regIp#, #email#, #mobile#, #gmtInvalid#, #validCode#, 
+      #gmtSend#)
+    <selectKey keyProperty="id" resultClass="java.lang.Long" >
+      SELECT LAST_INSERT_ID() AS value
+    </selectKey>
+  </insert>
+
+  <update id="reg.update" parameterClass="regDO" >
+    UPDATE jmb_reg   
+    <dynamic prepend="SET" >
+      <isNotNull property="regIp" prepend="," >
+        <![CDATA[  
+        reg_ip = #regIp#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="email" prepend="," >
+        <![CDATA[  
+        email = #email#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="mobile" prepend="," >
+        <![CDATA[  
+        mobile = #mobile#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtInvalid" prepend="," >
+        <![CDATA[  
+        gmt_invalid = #gmtInvalid#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="validCode" prepend="," >
+        <![CDATA[  
+        valid_code = #validCode#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtSend" prepend="," >
+        <![CDATA[  
+        gmt_send = #gmtSend#  
+        ]]>  
+      </isNotNull>
+    </dynamic>
+     WHERE ID = #id#  
+  </update>
+
+  <select id="reg.findById" parameterClass="java.lang.Long" resultMap="regDOResultMap" >
+     SELECT 
+    <include refid="reg_columns" />
+    <![CDATA[  
+     FROM jmb_reg a1 WHERE ID = #id#
+    ]]>  
+  </select>
+
+  <delete id="reg.deleteById" parameterClass="java.lang.Long" >
+    <![CDATA[  
+     DELETE FROM jmb_reg WHERE ID = #id#
+    ]]>  
+  </delete>
+
+  <select id="reg.findList" resultMap="regDOResultMap" parameterClass="regQuery" >
+     SELECT 
+    <include refid="reg_columns" />
+     FROM jmb_reg a1 
+    <include refid="reg_queryParams" />
+  </select>
+</sqlMap>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+ 	  <package name="user" namespace="/user" extends="struts-default">
+ 	  
+ 	  	<!-- 异步提交注册邮箱 -->
+ 	  	<action name="reg_email_submit" class="userRegAction" method="regEmailSubmit">
+ 	  	</action>
+ 	  	
+ 	  </package>
+</struts>

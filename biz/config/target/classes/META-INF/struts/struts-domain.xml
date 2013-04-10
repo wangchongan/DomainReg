@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+ 	  <package name="domain" namespace="/domain" extends="struts-default">
+ 	  	<action name="sync" class="syncPendingDeletedDomainAction" method="sync">
+ 	  		<result name="success">
+ 	  			/index.jsp
+ 	  		</result>
+ 	  	</action>
+ 	  	<action name="deal_domain" class="syncPendingDeletedDomainAction" method="dealDomain">
+ 	  		<result name="success">
+ 	  			/index.jsp
+ 	  		</result>
+ 	  	</action>
+ 	  	<action name="del_query" class="indexAction" method="delQuery">
+ 	  		<result name="success">
+ 	  			/WEB-INF/pages/domain/pending_deleted_searcher.jsp
+ 	  		</result>
+ 	  	</action>
+ 	  	<!-- 域名智能组合查询 -->
+ 	  	<action name="advance_check" class="advanceCheckAction" method="advanceCheck">
+ 	  		<result name="success">
+ 	  			/WEB-INF/pages/domain/advance_check.jsp
+ 	  		</result>
+ 	  	</action>
+ 	  	<!-- 智能查询异步处理 -->
+ 	  	<action name="async_advance_check" class="advanceCheckAction" method="asyncAdvanceCheck">
+ 	  	</action>
+ 	  	<!-- 异步校验 -->
+ 	  	<action name="async_reg_check" class="domainRegCheckAction" method="asyncRegCheck">
+ 	  	</action>
+ 	  	
+ 	  	<!-- 域名删除监视宝 -->
+ 	  	<action name="del_monitor" class="delMonitorAction" method="delMonitor">
+ 	  		<result name="success">
+ 	  			/WEB-INF/pages/domain/del_monitor.jsp
+ 	  		</result>
+ 	  	</action>
+ 	  </package>
+ 	  
+ 	  <package name="index" namespace="/" extends="struts-default">
+ 	  		<action name="for_del_query" class="indexAction" method="forDelQuery">
+ 	  			<result name="success">
+ 	  				/WEB-INF/pages/domain/pending_deleted_searcher.jsp
+ 	  			</result>
+ 	  		</action>
+ 	  		<action name="whois" class="whoisAction" method="whois">
+ 	  			<result name="success">
+ 	  				/WEB-INF/pages/domain/whois.jsp
+ 	  			</result>
+ 	  		</action>
+ 	  		<action name="check" class="domainRegCheckAction" method="check">
+ 	  			<result name="success">
+ 	  				/WEB-INF/pages/domain/check.jsp
+ 	  			</result>
+ 	  		</action>
+ 	  </package>
+</struts>

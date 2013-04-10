@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="pinyin" >
+
+  <typeAlias alias="pinyinDO" type="com.jinmibao.biz.dataobject.domain.PinyinDO" />
+  <typeAlias alias="pinyinQuery" type="com.jinmibao.biz.query.domain.PinyinQuery" />
+
+  <resultMap id="pinyinDOResultMap" class="pinyinDO" >
+    <result property="id" column="id" />
+    <result property="gmtCreate" column="gmt_create" />
+    <result property="gmtModified" column="gmt_modified" />
+    <result property="pinyin" column="pinyin" />
+    <result property="chinese" column="chinese" />
+    <result property="startWith" column="start_with" />
+    <result property="allLength" column="all_length" />
+    <result property="isYuanyin" column="is_yuanyin" />
+    <result property="num" column="num" />
+    <result property="first" column="first" />
+    <result property="firstPinyin" column="first_pinyin" />
+    <result property="second" column="second" />
+    <result property="secondPinyin" column="second_pinyin" />
+    <result property="third" column="third" />
+    <result property="thirdPinyin" column="third_pinyin" />
+    <result property="fourth" column="fourth" />
+    <result property="fourthPinyin" column="fourth_pinyin" />
+    <result property="hot" column="hot" />
+  </resultMap>
+ 
+  <sql id="pinyin_columns" >
+    a1.id, a1.gmt_create, a1.gmt_modified, a1.pinyin, a1.chinese, a1.start_with, a1.all_length, 
+      a1.is_yuanyin, a1.num, a1.first, a1.first_pinyin, a1.second, a1.second_pinyin, 
+      a1.third, a1.third_pinyin, a1.fourth, a1.fourth_pinyin, a1.hot
+  </sql>
+
+  <sql id="pinyin_queryParams" >
+    <dynamic prepend="WHERE" >
+      <isNotNull property="id" prepend="AND" >
+        <![CDATA[  
+        id = #id#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtCreate" prepend="AND" >
+        <![CDATA[  
+        gmt_create = #gmtCreate#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtModified" prepend="AND" >
+        <![CDATA[  
+        gmt_modified = #gmtModified#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="pinyin" prepend="AND" >
+        <![CDATA[  
+        pinyin = #pinyin#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="chinese" prepend="AND" >
+        <![CDATA[  
+        chinese = #chinese#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="startWith" prepend="AND" >
+        <![CDATA[  
+        start_with = #startWith#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="allLength" prepend="AND" >
+        <![CDATA[  
+        all_length = #allLength#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isYuanyin" prepend="AND" >
+        <![CDATA[  
+        is_yuanyin = #isYuanyin#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="num" prepend="AND" >
+        <![CDATA[  
+        num = #num#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="first" prepend="AND" >
+        <![CDATA[  
+        first = #first#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="firstPinyin" prepend="AND" >
+        <![CDATA[  
+        first_pinyin = #firstPinyin#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="second" prepend="AND" >
+        <![CDATA[  
+        second = #second#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="secondPinyin" prepend="AND" >
+        <![CDATA[  
+        second_pinyin = #secondPinyin#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="third" prepend="AND" >
+        <![CDATA[  
+        third = #third#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="thirdPinyin" prepend="AND" >
+        <![CDATA[  
+        third_pinyin = #thirdPinyin#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="fourth" prepend="AND" >
+        <![CDATA[  
+        fourth = #fourth#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="fourthPinyin" prepend="AND" >
+        <![CDATA[  
+        fourth_pinyin = #fourthPinyin#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="hot" prepend="AND" >
+        <![CDATA[  
+        hot = #hot#  
+        ]]>  
+      </isNotNull>
+    </dynamic>
+  </sql>
+ 
+  <insert id="pinyin.add" parameterClass="pinyinDO" >
+    INSERT INTO jmb_pinyin(gmt_create, gmt_modified, pinyin, chinese, start_with, all_length, 
+      is_yuanyin, num, first, first_pinyin, second, second_pinyin, third, 
+      third_pinyin, fourth, fourth_pinyin, hot)
+     VALUES ( #gmtCreate#, #gmtModified#, #pinyin#, #chinese#, #startWith#, #allLength#, 
+      #isYuanyin#, #num#, #first#, #firstPinyin#, #second#, #secondPinyin#, #third#, 
+      #thirdPinyin#, #fourth#, #fourthPinyin#, #hot#)
+    <selectKey keyProperty="id" resultClass="java.lang.Long" >
+      SELECT LAST_INSERT_ID() AS value
+    </selectKey>
+  </insert>
+
+  <update id="pinyin.update" parameterClass="pinyinDO" >
+    UPDATE jmb_pinyin   
+    <dynamic prepend="SET" >
+      <isNotNull property="gmtModified" prepend="," >
+        <![CDATA[  
+        gmt_modified = #gmtModified#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="pinyin" prepend="," >
+        <![CDATA[  
+        pinyin = #pinyin#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="chinese" prepend="," >
+        <![CDATA[  
+        chinese = #chinese#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="startWith" prepend="," >
+        <![CDATA[  
+        start_with = #startWith#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="allLength" prepend="," >
+        <![CDATA[  
+        all_length = #allLength#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isYuanyin" prepend="," >
+        <![CDATA[  
+        is_yuanyin = #isYuanyin#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="num" prepend="," >
+        <![CDATA[  
+        num = #num#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="first" prepend="," >
+        <![CDATA[  
+        first = #first#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="firstPinyin" prepend="," >
+        <![CDATA[  
+        first_pinyin = #firstPinyin#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="second" prepend="," >
+        <![CDATA[  
+        second = #second#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="secondPinyin" prepend="," >
+        <![CDATA[  
+        second_pinyin = #secondPinyin#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="third" prepend="," >
+        <![CDATA[  
+        third = #third#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="thirdPinyin" prepend="," >
+        <![CDATA[  
+        third_pinyin = #thirdPinyin#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="fourth" prepend="," >
+        <![CDATA[  
+        fourth = #fourth#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="fourthPinyin" prepend="," >
+        <![CDATA[  
+        fourth_pinyin = #fourthPinyin#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="hot" prepend="," >
+        <![CDATA[  
+        hot = #hot#  
+        ]]>  
+      </isNotNull>
+    </dynamic>
+     WHERE id = #id#  
+  </update>
+
+  <select id="pinyin.findById" parameterClass="java.lang.Long" resultMap="pinyinDOResultMap" >
+     SELECT 
+    <include refid="pinyin_columns" />
+    <![CDATA[  
+     FROM jmb_pinyin a1 WHERE id = #id#
+    ]]>  
+  </select>
+
+  <delete id="pinyin.deleteById" parameterClass="java.lang.Long" >
+    <![CDATA[  
+     DELETE FROM jmb_pinyin WHERE id = #id#
+    ]]>  
+  </delete>
+
+  <select id="pinyin.findList" resultMap="pinyinDOResultMap" parameterClass="pinyinQuery" >
+     SELECT 
+    <include refid="pinyin_columns" />
+     FROM jmb_pinyin a1 
+    <include refid="pinyin_queryParams" />
+  </select>
+</sqlMap>
